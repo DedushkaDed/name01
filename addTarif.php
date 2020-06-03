@@ -16,21 +16,20 @@ if (isset($_POST['title']) && isset($_POST['price']) && isset($_POST['link']) &&
     $tarif_group_id = $_POST['tarif_group_id'];
 
 
-
     $result = $api->addTarif($tarif_title, $tarif_price, $tarif_link, $tarif_speed, $tarif_pay_period, $tarif_group_id);
 
     if($result){
         $response['status'] = "00";
-        $response['message'] = "В таблицу tarifs успешно добавлены файлы.";
+        $response['message'] = "В таблицу 'tarifs' успешно добавлены файлы.";
     }else{
         $response['status'] = "06";
-        $response['message'] = "Ошибка добавление новых файлов в таблицу tarifs.";
+        $response['message'] = "Ошибка добавление новых файлов в таблицу 'tarifs'.";
     }
 
     echo json_encode($response);
-}else {
+} else {
     $response['status'] = "99";
-    $response['message'] = "Необходимые параметры отсутсвуют! (tarifs).";
+    $response['message'] = "Необходимые параметры отсутсвуют! 'tarifs'.";
 
     echo json_encode($response);
 }
