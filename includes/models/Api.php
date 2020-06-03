@@ -17,14 +17,16 @@
         }
 
 
-        
-            public function addTarif($tarif_title, $tarif_price, $tarif_link, $tarif_speed){
+            // POST-Метод (tarifs)
+            public function addTarif($tarif_title, $tarif_price, $tarif_link, $tarif_speed, $tarif_pay_period, $tarif_group_id){
 
-            $this->db->query('INSERT INTO tarifs(title, price, link, speed) VALUES(:title, :price, :link, :speed)');
+            $this->db->query('INSERT INTO tarifs(title, price, link, speed, pay_period, tarif_group_id) VALUES(:title, :price, :link, :speed, :pay_period, :tarif_group_id)');
             $this->db->bind(':title', $tarif_title);
             $this->db->bind(':price', $tarif_price);
             $this->db->bind(':link', $tarif_link);
             $this->db->bind(':speed', $tarif_speed);
+            $this->db->bind(':pay_period', $tarif_pay_period);
+            $this->db->bind(':tarif_group_id', $tarif_group_id);
             
 
             if($this->db->execute()){

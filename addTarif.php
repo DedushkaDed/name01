@@ -7,17 +7,19 @@ header('Content-Type: application/json; charset=UTF-8');
 $response = array();
 
 
-// title price link speed
+// 
 
-if (isset($_POST['title']) && isset($_POST['price']) && isset($_POST['link']) && isset($_POST['speed'])){
+if (isset($_POST['title']) && isset($_POST['price']) && isset($_POST['link']) && isset($_POST['speed']) && isset($_POST['pay_period']) && isset($_POST['tarif_group_id'])){
     $tarif_title = $_POST['title'];
     $tarif_price = $_POST['price'];
     $tarif_link = $_POST['link'];
     $tarif_speed = $_POST['speed'];
+    $tarif_pay_period = $_POST['pay_period'];
+    $tarif_group_id = $_POST['tarif_group_id'];
 
 
 
-    $result = $api->addTarif($tarif_title, $tarif_price, $tarif_link, $tarif_speed);
+    $result = $api->addTarif($tarif_title, $tarif_price, $tarif_link, $tarif_speed, $tarif_pay_period, $tarif_group_id);
 
     if($result){
         $response['status'] = "00";
