@@ -17,16 +17,15 @@
         }
 
 
-        // public function addTarif($tarif_title, $tarif_price, $tarif_link, $tarif_speed, $tarif_pay_period, $tarif_group_id){
-            public function addTarif($tarif_title, $tarif_speed, $tarif_link){
-            // $this->db->query('INSERT INTO tarifs(title, price, link, speed, pay_period, tarif_group_id) VALUES(:title, :price, :link, :speed, :payPeriod, :groupId)');
-            $this->db->query('INSERT INTO tarifs(title, speed, link) VALUES(:title, :speed, :link)');
+        
+            public function addTarif($tarif_title, $tarif_price, $tarif_link, $tarif_speed){
+
+            $this->db->query('INSERT INTO tarifs(title, price, link, speed) VALUES(:title, :price, :link, :speed)');
             $this->db->bind(':title', $tarif_title);
-            $this->db->bind(':speed', $tarif_speed);
+            $this->db->bind(':price', $tarif_price);
             $this->db->bind(':link', $tarif_link);
-            // $this->db->bind(':speed', $tarif_speed);
-         //   $this->db->bind(':payPeriod', $tarif_pay_period);
-         //   $this->db->bind(':groupId', $tarif_group_id);
+            $this->db->bind(':speed', $tarif_speed);
+            
 
             if($this->db->execute()){
                 return true;
@@ -35,7 +34,8 @@
             }
         }
 
-        public function modifyProduct($id, $tarif_title, $tarif_price, $tarif_link, $tarif_speed, $tarif_pay_period, $tarif_group_id){
+        // modifyProduct
+        public function modifyTarif($id, $tarif_title, $tarif_price, $tarif_link, $tarif_speed, $tarif_pay_period, $tarif_group_id){
             $this->db->query('UPDATE tarifs SET title = :title, price = :price, link = :link, speed = :speed, pay_period = :payPeriod, tarif_group_id = :groupId WHERE ID = :id');
             $this->db->bind(':title', $tarif_title);
             $this->db->bind(':price', $tarif_price);

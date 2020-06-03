@@ -7,19 +7,17 @@ header('Content-Type: application/json; charset=UTF-8');
 $response = array();
 
 
-/* if (isset($_POST['title']) && isset($_POST['price']) && isset($_POST['link']) 
-&& isset($_POST['speed']) && isset($_POST['payPeriod']) && isset($_POST['groupId'])) */
+// title price link speed
 
-if (isset($_POST['title']) && isset($_POST['speed']) && isset($_POST['link'])){
+if (isset($_POST['title']) && isset($_POST['price']) && isset($_POST['link']) && isset($_POST['speed'])){
     $tarif_title = $_POST['title'];
-    $tarif_speed = $_POST['speed'];
+    $tarif_price = $_POST['price'];
     $tarif_link = $_POST['link'];
-    // $speed = $_POST['speed'];
-    // $payPeriod = $_POST['payPeriod'];
-    // $groupId = $_POST['groupId'];
+    $tarif_speed = $_POST['speed'];
 
-    // $result = $api->addTarif($title, $price, $link, $speed, $payPeriod, $groupId);
-    $result = $api->addTarif($tarif_title, $tarif_speed, $tarif_link);
+
+
+    $result = $api->addTarif($tarif_title, $tarif_price, $tarif_link, $tarif_speed);
 
     if($result){
         $response['status'] = "00";
