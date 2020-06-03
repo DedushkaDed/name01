@@ -37,15 +37,15 @@
         }
 
         // modifyProduct
-        public function modifyTarif($id, $tarif_title, $tarif_price, $tarif_link, $tarif_speed, $tarif_pay_period, $tarif_group_id){
-            $this->db->query('UPDATE tarifs SET title = :title, price = :price, link = :link, speed = :speed, pay_period = :payPeriod, tarif_group_id = :groupId WHERE ID = :id');
+        public function modifyTarif($tarif_ID, $tarif_title, $tarif_price, $tarif_link, $tarif_speed, $tarif_pay_period, $tarif_group_id){
+            $this->db->query('UPDATE tarifs SET title = :title, price = :price, link = :link, speed = :speed, pay_period = :pay_period, tarif_group_id = :tarif_group_id WHERE ID = :id');
             $this->db->bind(':title', $tarif_title);
             $this->db->bind(':price', $tarif_price);
             $this->db->bind(':link', $tarif_link);
             $this->db->bind(':speed', $tarif_speed);
-            $this->db->bind(':payPeriod', $tarif_pay_period);
-            $this->db->bind(':groupId', $tarif_group_id);
-            $this->db->bind(':id', $id);
+            $this->db->bind(':pay_period', $tarif_pay_period);
+            $this->db->bind(':tarif_group_id', $tarif_group_id);
+            $this->db->bind(':id', $tarif_ID);
 
             if($this->db->execute()){
                 return true;
@@ -54,9 +54,9 @@
             }
         }
 
-        public function deleteProduct($id){
+        public function deleteTarif($tarif_ID){
             $this->db->query("DELETE FROM tarifs WHERE ID = :id");
-            $this->db->bind(":id", $id);
+            $this->db->bind(":id", $tarif_ID);
 
             if($this->db->execute()){
                 return true;
@@ -76,7 +76,7 @@
         }
 
         // Вернет все данные из таблицы
-        public function getAllProducts(){
+        public function getAllTarifs(){
             $query = "SELECT * FROM tarifs";
 
             return $this->findBySql($query);
